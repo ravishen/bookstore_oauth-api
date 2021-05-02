@@ -1,0 +1,29 @@
+package access_token
+
+import (
+	"time"
+)
+
+const (
+	expiry = 24
+)
+
+type AccessToken struct {
+	AccessToken string `json:"access_token"`
+	UserId      int64  `json:"user_id"`
+	ClientId    int64  `json:"client_id"`
+	Expires     int64  `json:"expires"`
+}
+
+func GetNewAccessToken() AccessToken {
+	return AccessToken{
+		Expires: time.Now().UTC().Add(expiry * time.Hour).Unix(),
+	}
+}
+
+func (at AccessToken) IsExpired() bool {
+	current := time.Now().UTC()
+	expiration := time.Unix(at.Expires, 0)
+
+	return current.After(expiration)
+}
