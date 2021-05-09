@@ -1,0 +1,9 @@
+{
+    "cassandraWorkbench.activeClusterName": "Cluster local",
+    "cassandraWorkbench.activeKeyspace": [
+        [
+            "Cluster local",
+            "oauth"
+        ]
+    ]
+}
